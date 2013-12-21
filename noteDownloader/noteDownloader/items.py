@@ -1,11 +1,10 @@
-# Define here the models for your scraped items
-#
-# See documentation in:
-# http://doc.scrapy.org/en/latest/topics/items.html
+# These are the possible items we are trying to get from the page
+# to download.
 
 from scrapy.item import Item, Field
 
 class NotedownloaderItem(Item):
-    # define the fields for your item here like:
-    # name = Field()
-    pass
+    lectures = Field()
+    handouts = Field()
+    discussion_problems = Field()
+    assignments = Field()

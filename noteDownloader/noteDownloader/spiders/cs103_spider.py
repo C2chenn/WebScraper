@@ -7,7 +7,7 @@
 # for now i just created a list of the links (if my syntax is correct)
 # later add in how to download using pdf
 from scrapy.spider import BaseSpider
-from scrapy.selector import Selector
+from scrapy.selector import HtmlXPathSelector
 from noteDownloader.items import NotedownloaderItem
 
 class cs103spider(BaseSpider):
@@ -20,15 +20,15 @@ class cs103spider(BaseSpider):
 		'''Will go through everything and get the pdf urls to save into
 		a file.'''
 		sel = HtmlXPathSelector(response)
-		title = sel.xpath("//p")
+		title = sel.select("//p")
 		items = []
 		for obj in title:
 			item = NotedownloaderItem()
-			item["lectures"] = title.xpath('a[contains(@href, "lectures")/@href]').extract() 
-			item["handouts"] = title.xpath('a[contains(@href, "handouts")/@href]').extract() 
-			item["discussion_problems"] = title.xpath('a[contains(@href, "Discussion Problems")/@href]').extract()
-			item["assignments"] = title.xpath('a[contains(@href, "Problem Set")/@href]').extract()
-			items.append[item]
+			item["lectures"] = title.select('a[contains(@href, "lectures")]/@href').extract() 
+			item["handouts"] = title.select('a[contains(@href, "handouts")]/@href').extract() 
+			item["discussion_problems"] = title.select('a[contains(@href, "Discussion Problems")]/@href').extract()
+			item["assignments"] = title.select('a[contains(@href, "Problem Set")]/@href').extract()
+			items.append(item)
 		return items
 
 

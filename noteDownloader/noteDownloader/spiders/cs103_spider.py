@@ -24,10 +24,10 @@ class cs103spider(BaseSpider):
 		items = []
 		for obj in title:
 			item = NotedownloaderItem()
-			item["lectures"] = title.select('a[contains(@href, "lectures")]/@href').extract() 
-			item["handouts"] = title.select('a[contains(@href, "handouts")]/@href').extract() 
-			item["discussion_problems"] = title.select('a[contains(@href, "Discussion Problems")]/@href').extract()
-			item["assignments"] = title.select('a[contains(@href, "Problem Set")]/@href').extract()
+			item["lectures"] = obj.select('a[contains(@href, "lectures")]/@href').extract() 
+			item["handouts"] = obj.select('a[contains(@href, "handouts")]/@href').extract() 
+			item["discussion_problems"] = obj.select('a[contains(@href, "Discussion Problems")]/@href').extract()
+			item["assignments"] = obj.select('a[contains(@href, "Problem Set")]/@href').extract()
 			items.append(item)
 		return items
 

@@ -1,0 +1,15 @@
+Item-
+	Define Fields (What variables you want...like title, link, etc.
+
+Pipelines-
+	Take info from scraper and turn into pdf (magically)
+
+Settings-
+	Learn about this (Probably not important)
+
+Spiders-
+	Write spider and put it in here
+
+scrapy.cfg-
+	Learn what this is
+

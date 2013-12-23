@@ -3,6 +3,7 @@ Item-
 
 Pipelines-
 	Take info from scraper and turn into pdf (magically)
+		process_item(item, spider)
 
 Settings-
 	Learn about this (Probably not important)

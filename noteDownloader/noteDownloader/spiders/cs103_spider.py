@@ -22,6 +22,7 @@ class cs103spider(BaseSpider):
 	def parse(self, response):
 		'''Will go through everything and get the pdf urls to save into
 		a file.'''
+		"""
 		sel = HtmlXPathSelector(response)
 		category = sel.select("//p")
 		items = []
@@ -46,9 +47,7 @@ class cs103spider(BaseSpider):
 			for a in assignment:
 				item = NotedownloaderItem()
 				item["assignments"] = a.select('@href').extract()
-				items.append(item)
-
-			return items
-
-
-
+				items.append(item) """
+		yield NotedownloaderItem (
+			file_urls= ['http://www.stanford.edu/class/cs103/handouts/000%20Course%20Information.pdf',]
+			)

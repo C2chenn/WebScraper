@@ -11,5 +11,9 @@ BOT_NAME = 'noteDownloader'
 SPIDER_MODULES = ['noteDownloader.spiders']
 NEWSPIDER_MODULE = 'noteDownloader.spiders'
 
+ITEM_PIPELINES = [
+	'noteDownloader.files.FilesPipeline',
+	]
+FILES_STORE = 'Downloads'
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'noteDownloader (+http://www.yourdomain.com)'

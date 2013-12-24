@@ -8,3 +8,5 @@ class NotedownloaderItem(Item):
     handouts = Field()
     discussion_problems = Field()
     assignments = Field()
+    file_urls = Field()
+    files = Field()

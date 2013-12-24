@@ -46,9 +46,7 @@ class cs103spider(BaseSpider):
 			for url in list:
 				url = "http://www.stanford.edu/class/cs103/" + url
 				urls.append(url)
-
-		print urls
 		
 		yield NotedownloaderItem (
 			file_urls = urls
-			) 
+			)

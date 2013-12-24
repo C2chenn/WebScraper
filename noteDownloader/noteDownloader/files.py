@@ -287,10 +287,10 @@ class FilesPipeline(MediaPipeline):
             _warn()
             return self.file_key(url)
         ## end of deprecation warning block
-
-        media_guid = hashlib.sha1(url).hexdigest()  # change to request.url after deprecation
-        media_ext = os.path.splitext(url)[1]  # change to request.url after deprecation
-        return '%s%s' % (media_guid, media_ext)
+        length = len('http://www.stanford.edu/class/cs103/')
+        url = request.url
+        url = url[length:]
+        return url
 
     # deprecated
     def file_key(self, url):

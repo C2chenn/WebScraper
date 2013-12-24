@@ -11,4 +11,6 @@ for fname in fnames:
 		result = result[5:]
 		if result[0] == '0':
 			result = result[0:]
+	result.replace("20", "")
+	result.replace("0", "")
 	rename(fname, result)

@@ -22,7 +22,7 @@ class cs103spider(BaseSpider):
 	def parse(self, response):
 		'''Will go through everything and get the pdf urls to save into
 		a file.'''
-		"""
+		
 		sel = HtmlXPathSelector(response)
 		category = sel.select("//p")
 		items = []
@@ -33,21 +33,22 @@ class cs103spider(BaseSpider):
 			assignment = obj.select('//a[contains(@href, "Problem Set")]')
 
 			for l in lecture:
-				item = NotedownloaderItem()
-				item["lectures"] = l.select('@href').extract()
-				items.append(item)
+				items.append(l.select('@href').extract()) 
 			for h in handout:
-				item = NotedownloaderItem()
-				item["handouts"] = h.select('@href').extract()
-				items.append(item)
+				items.append(h.select('@href').extract())
 			for d in discussion_problem:
-				item = NotedownloaderItem()
-				item["discussion_problems"] = d.select('@href').extract()
-				items.append(item)
+				items.append(d.select('@href').extract())
 			for a in assignment:
-				item = NotedownloaderItem()
-				item["assignments"] = a.select('@href').extract()
-				items.append(item) """
+				items.append(a.select('@href').extract())
+
+		urls = []
+		for list in items:
+			for url in list:
+				url = "http://www.stanford.edu/class/cs103/" + url
+				urls.append(url)
+
+		print urls
+		
 		yield NotedownloaderItem (
-			file_urls= ['http://www.stanford.edu/class/cs103/handouts/000%20Course%20Information.pdf',]
-			)
+			file_urls = urls
+			) 
